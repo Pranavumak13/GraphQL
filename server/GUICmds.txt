@@ -1,0 +1,48 @@
+
+# query getAllUsers {
+#   users {
+#     name
+#     friends {
+#       name
+#     }
+#   }
+# }
+
+# 
+# query getAUser($userId: ID!){
+#    user(id: $userId) {
+#        name
+#        age
+#        nationality
+#    }
+# }
+
+
+#3
+# query getMovie($title: String!){
+#     movie(title: $title) {
+#         id
+#         title
+#         isFamous
+#     }
+#     movies {
+#         id
+#         title
+#         isFamous
+#         year
+#     }
+# }
+
+ query getAUser($userId: ID!){
+   user(id: $userId) {
+       name
+       age
+       nationality
+       favoriteMovies {
+    
+           isFamous
+           title
+           year
+       } 
+   }
+}
