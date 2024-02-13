@@ -46,3 +46,39 @@
        } 
    }
 }
+
+// Day 2: Mutations.
+
+query getTheUsers{
+    users {
+        id
+        name
+        age
+        nationality
+    }
+}
+
+mutation CreateAUser($input: StructNewUserInput!){
+  CreateUser(input: $input) {
+    id
+    name
+    username
+    age
+  }
+}
+
+mutation UpdateTheUserAge($input: UpdateAgeInput!){
+  UpdateUserAge(input: $input) {
+      id
+      name
+      username
+      age
+  }
+}
+
+
+mutation($deleteUserId: ID!) {
+  deleteUser(id: $deleteUserId) {
+    id
+  }
+}
