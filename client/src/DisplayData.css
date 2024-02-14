@@ -1,0 +1,45 @@
+body{
+    margin: 0;
+    padding-left: 10rem;
+    padding-right: 10rem;
+    box-sizing: border-box;
+}
+
+.SearchItems{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 100vh;
+    width: auto;
+}
+
+.InputThings{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width:40rem;
+    flex-direction: column;
+}
+
+.InputThings input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    /* float: left; */
+    width: 80%;
+    background: #f1f1f1;
+  }
+
+.InputThings  button {
+    /* float: left; */
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+    margin: 10px;
+  }

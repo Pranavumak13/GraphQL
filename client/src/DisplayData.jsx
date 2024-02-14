@@ -1,6 +1,7 @@
 import {gql, useQuery, useLazyQuery} from '@apollo/client'
 // useLazyQuery Hook helps us fetch the data when told only!! 
 import { useState } from 'react'
+import  "./DisplayData.css"
 
 const QUERY_ALL_USERS = gql`
     query getTheUsers{
@@ -32,34 +33,49 @@ query Movie($title: String!){
         year
     }
 }
-
 `
 
+const QUERY_A_USER_BY_NAME = gql`
+
+query UserName($name: String!){
+    userByName(name: $name) {
+      name
+      age
+    }
+  }
+
+`
 
 function DisplayData(){
     
     const {data, loading, error} = useQuery(QUERY_ALL_USERS);
     const {data: movieData} = useQuery(QUERY_ALL_MOVIES);
-    
-    
+   
     // Create Movie search states
     const [searchedMovie, setSearchedMovie] = useState("")
     // for fetching the data syntx: const [funName, {data and error}]
     const [fetchMovie, 
            {data: searchedMovieData, error: searchedMovieError} ] = useLazyQuery(QUERY_A_MOVIE_BY_NAME)
+    // Errors
+    if(searchedMovieError){
+        console.log(searchedMovieError);
+    }
 
+
+    // Create UserSearch State
+    const [userSearched, setUserSearched] = useState("")
+    const [fetchUser,
+            {data: UserSearchedData, error: UserSearchedError}] = useLazyQuery(QUERY_A_USER_BY_NAME);
+
+     
     if(loading){
         return <h1>The content is loading...</h1>
     }else if(error){
         return <h1>Error: {error.message}</h1>;
     }
-
-    if(searchedMovieError){
-        console.log(searchedMovieError);
-    }
-
     
     return ( 
+        
         <div>
         {data &&
             data.users.map((user) =>{
@@ -91,37 +107,76 @@ function DisplayData(){
                 )
             } )    
         }
-        
+            
     <hr />
-        
-    <div>
-        {/* Input */}
-        <input type="text" placeholder='Type a movie name...' onChange={(event) => {
-            setSearchedMovie(event.target.value)
-        }}/>
-        {/* Button */}
-        <button onClick={()=>{fetchMovie({
-            variables: {
-                title:searchedMovie
-            }
-        })}}>Search Movie</button>
-        {/* How to Display */}
-        <div>
-            {searchedMovieData && (
-                <div>
-                    <h3>MovieName: {searchedMovieData.movie.title}</h3>
-                    <h3>Year of Publication: {searchedMovieData.movie.year}</h3>
-                </div>
-            )}
+    
 
-            {/* If errors */}
-            {searchedMovieError &&
-            <h3>There is an error fetching the data</h3>}
+    <div  className='SearchItems'>
+    {/*  Search a movie by USER INPUT */}
+        <div className='InputThings'>
+
+            {/* Input */}
+
+            <input type="text"  style={{ padding: "20px" }} placeholder='Type a movie name...' onChange={(event) => {
+                setSearchedMovie(event.target.value)
+            }}/>
+
+            {/* Button */}
+
+            <button onClick={()=>{fetchMovie({
+                variables: {
+                    title:searchedMovie
+                }
+            })}}>Search Movie</button>
+
+            {/* How to Display */}
+
+            <div>
+                {searchedMovieData && (
+                    <div>
+                        <h3>MovieName: {searchedMovieData.movie.title}</h3>
+                        <h3>Year of Publication: {searchedMovieData.movie.year}</h3>
+                    </div>
+                )}
+
+                {/* If errors */}
+                {searchedMovieError &&
+                <h3>There is an error fetching the data</h3>}
+            </div>
+
         </div>
-    </div>
-        
+            
+    {/* Search a User through user Input */}
 
+        <div className='InputThings'>
+
+            {/* Input */}
+            <input type="text"  placeholder='Search the user...' onChange={(event) => {
+                setUserSearched(event.target.value)
+            }} />
+
+            {/* Button */}
+            <button onClick={()=>fetchUser({
+                variables: {
+                    name:userSearched
+                }
+            })}>Search User</button>
+
+            <div>
+                {UserSearchedData && (
+                    <div>
+                        <h3>User Name: {UserSearchedData.userByName.name}</h3>
+                        <h3>User Age: {UserSearchedData.userByName.age}</h3>
+                    </div>
+                )}
+
+                {/* If errors */}
+                {UserSearchedError &&
+                <h3>There is an error fetching the data</h3>}
+            </div>
+        </div>  
     </div>
+</div>
     )
 }
 
