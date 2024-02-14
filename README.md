@@ -9,4 +9,9 @@
      -  typedefs
      -  resolvers
 7. Mutations in GQL.
+8. Apolloclient Library
+   - useQuery() Hook
+   - useLazyQuery() Hook
+   - useMutation() Hook
+   
    
