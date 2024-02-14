@@ -13,11 +13,11 @@ export const typeDefs = gql`
  }
  #3 Making our own datatype with enum 
   enum Nationality{
-    Canadian
-    Indian
-    God
-    British
-    Hogwarts
+    CANADIAN
+    INDIAN
+    GOD
+    BRITISH
+    HOGWARTS
   }
 
   #4
@@ -50,12 +50,17 @@ export const typeDefs = gql`
     newAge: Int!
   }
 
+  input UpdateNationalityInput{
+  id: ID!
+  newNationality: Nationality!
+  }
+
   #5 Creating a new User Mutation
   type Mutation{
     CreateUser(input:StructNewUserInput!): User
     UpdateUserAge(input: UpdateAgeInput!): User
+    UpdateUserNationality(input: UpdateNationalityInput!): User
     deleteUser(id:ID!): User
   }
-  
 
 `;

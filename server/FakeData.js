@@ -4,35 +4,35 @@ export const UserList = [
         name: 'John',
         username: 'john',
         age: 21,
-        nationality: 'Canadian'
+        nationality: 'CANADIAN'
     },
     {
         id: 2,
         name: 'Pranav',
         username: 'pranav',
         age: 21,
-        nationality: 'Indian',
+        nationality: 'INDIAN',
         friends:[ 
             {
                 id: 3,
                 name: 'Krishna',
                 username: 'krishna',
                 age: 192,
-                nationality: 'God'
+                nationality: 'GOD'
             },
             {
                 id: 4,
                 name: 'Emma',
                 username: 'emma',
                 age: 30,
-                nationality: 'British'
+                nationality: 'BRITISH'
             },
             {
                 id: 5,
                 name: 'Harry',
                 username: 'harry',
                 age: 32,
-                nationality: 'Hogwarts'
+                nationality: 'HOGWARTS'
             },
         ]
     },
@@ -41,28 +41,28 @@ export const UserList = [
         name: 'Krishna',
         username: 'krishna',
         age: 192,
-        nationality: 'God'
+        nationality: 'GOD'
     },
     {
         id: 4,
         name: 'Emma',
         username: 'emma',
         age: 30,
-        nationality: 'British'
+        nationality: 'BRITISH'
     },
     {
         id: 5,
         name: 'Harry',
         username: 'harry',
         age: 32,
-        nationality: 'Hogwarts',
+        nationality: 'HOGWARTS',
         friends:[
             {
                 id: 4,
                 name: 'Emma',
                 username: 'emma',
                 age: 30,
-                nationality: 'British'
+                nationality: 'BRITISH'
             }
         ]
     },

@@ -59,6 +59,17 @@ export const resolvers = {
     
           return userUpdated;
         },
+
+        UpdateUserNationality: (parent, args) => {
+          const { id, newNationality } = args.input;
+          let userUpdated;
+          UserList.forEach((user) => {
+            if (user.id === Number(id)) {
+              user.nationality = newNationality;
+              userUpdated = user;
+            }
+          });
+        },
     
         deleteUser: (parent, args) => {
           const id = args.id;

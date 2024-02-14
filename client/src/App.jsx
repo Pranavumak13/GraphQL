@@ -1,5 +1,6 @@
 import {ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 import DisplayData from './DisplayData'
+import DisplayMutationData from './DisplayMutationData'
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
   return (  
   <ApolloProvider client={client}>
       <div className='App'>
+        <DisplayMutationData/>
         <DisplayData />
       </div>
   </ApolloProvider>

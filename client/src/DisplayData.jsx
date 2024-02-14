@@ -48,7 +48,8 @@ query UserName($name: String!){
 
 function DisplayData(){
     
-    const {data, loading, error} = useQuery(QUERY_ALL_USERS);
+    const {data, loading, error, refetch} = useQuery(QUERY_ALL_USERS);
+    //refetch: it is to sync with the new data added
     const {data: movieData} = useQuery(QUERY_ALL_MOVIES);
    
     // Create Movie search states
