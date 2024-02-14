@@ -43,7 +43,11 @@ function DisplayMutationData() {
                     refetchAllUsers();
                 }
             });
-
+    
+    if(createUserError){
+        return <h1>Error: {createUserError.message}</h1>;
+    }
+        
     return(
         <div  className='SearchItems'>
             <div  className='InputThings'>
