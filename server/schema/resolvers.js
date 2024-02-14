@@ -14,6 +14,11 @@ export const resolvers = {
             const user = _.find(UserList, {id : Number(id)}); // '_' is a lodash which is used for array manipulation.; .find(from_where, to_what)
             return user;    
         },
+        userByName : (parent, args) =>{
+          const name = args.name
+          const user = _.find(UserList,{name: (name)} )
+          return user;
+        },
 
         //MOVIE RESOLVERS
         movies : () => {
