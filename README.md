@@ -13,5 +13,8 @@
    - useQuery() Hook
    - useLazyQuery() Hook
    - useMutation() Hook
-   
+9. Different Arguments in Resolver function
+10. Error Handling
+    - Union
+    - fragements   
    
