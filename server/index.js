@@ -6,10 +6,15 @@ import {resolvers} from "./schema/resolvers.js"
 
 const server = new ApolloServer({ 
     typeDefs, 
-    resolvers
- });
+    resolvers,
+    context: (req) => {
+      return req;
+    },
+ }); 
+
 
  const { url } = await startStandaloneServer(server, {
+   context: async ({ req }) => {return req },
     listen: { port: 4000 },
   });
   

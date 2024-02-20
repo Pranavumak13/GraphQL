@@ -30,7 +30,8 @@ export const typeDefs = gql`
 
   #1 Query type is the first level of Graph.
   type Query {
-    users : [User!]! 
+    users : [User!]! #when not using the Union Functionality
+    #users : UsersResult
     user(id:ID!):User!
     userByName(name:String!):User!
     movies: [Movie!]!
@@ -62,5 +63,18 @@ export const typeDefs = gql`
     UpdateUserNationality(input: UpdateNationalityInput!): User
     deleteUser(id:ID!): User
   }
+
+
+  
+  #Error Handling
+      type UserSuccessfulResult{
+        users : [User!]! 
+      }
+
+      type UserFailureResult{
+        message: String!
+      }
+
+      union UsersResult = UserSuccessfulResult | UserFailureResult
 
 `;

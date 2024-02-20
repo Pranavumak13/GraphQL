@@ -68,6 +68,8 @@ export const UserList = [
     },
 ];
 
+// export const UserList = null;
+
 export const MovieList = [
     {
         id:1,

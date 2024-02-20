@@ -1,37 +1,44 @@
-
-# query getAllUsers {
-#   users {
-#     name
-#     friends {
-#       name
-#     }
-#   }
-# }
+query getAllUsers {
+  users {
+    name
+    id
+    nationality
+  }
+}
 
 # 
-# query getAUser($userId: ID!){
-#    user(id: $userId) {
-#        name
-#        age
-#        nationality
-#    }
-# }
+query getAUser($userId: ID!){
+   user(id: $userId) {
+       name
+       age
+       nationality
+   }
+}
 
 
 #3
-# query getMovie($title: String!){
-#     movie(title: $title) {
-#         id
-#         title
-#         isFamous
-#     }
-#     movies {
-#         id
-#         title
-#         isFamous
-#         year
-#     }
-# }
+query getMovie($title: String!){
+    movie(title: $title) {
+        id
+        title
+        isFamous
+    }
+    movies {
+        id
+        title
+        isFamous
+        year
+    }
+}
+
+ query getAllMovies{
+        movies{
+            id
+            isFamous
+            title
+            year
+        }
+    }
 
  query getAUser($userId: ID!){
    user(id: $userId) {
@@ -47,15 +54,17 @@
    }
 }
 
-// Day 2: Mutations.
 
-query getTheUsers{
+query getTheUsers($movieTitle2: String!){
     users {
         id
         name
         age
         nationality
     }
+  movie(title: $movieTitle2) {
+    
+  }
 }
 
 mutation CreateAUser($input: StructNewUserInput!){
@@ -77,8 +86,69 @@ mutation UpdateTheUserAge($input: UpdateAgeInput!){
 }
 
 
+
 mutation($deleteUserId: ID!) {
   deleteUser(id: $deleteUserId) {
     id
   }
 }
+
+query allUser {
+  users {
+    id
+    name
+    age
+    nationality
+  }
+}
+
+
+mutation UpdateTheUserNationality($updateUserNationalityInput2: UpdateNationalityInput!){
+  UpdateUserNationality(input: $updateUserNationalityInput2) {
+    
+    name
+    nationality
+  }
+}
+
+
+query GetMovieAndUsers{
+  users { 
+    id
+    name
+    } 
+}
+
+query GetMovies{
+  movies {
+    ...GetTitleAndYear
+  }
+}
+
+
+fragment GetTitleAndYear on Movie{
+  title
+  year
+  id
+}
+
+
+
+#  Error handling union
+
+query ExampleUnionQuery{
+  users {
+    ...on UserSuccessfulResult{
+      users {
+        id
+        name
+        age
+      }
+    }
+
+    ...on UserFailureResult{
+        message
+    }
+  }
+}
+
