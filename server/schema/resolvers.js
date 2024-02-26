@@ -2,10 +2,12 @@ import { UserList } from "../FakeData.js";
 import {MovieList } from "../FakeData.js"
 import pkg from 'lodash'; // Lodash's modular methods are great for: Iterating arrays, objects, & strings. Manipulating & testing values. 
 const { _ } = pkg;
+import {pool} from "../db.js"
 
 export const resolvers = { 
     Query: {
         //USER RESOLVERS
+        
         users : () => {
           return UserList // Use when not doing the error checking
           //if(UserList)  return {users: UserList}
