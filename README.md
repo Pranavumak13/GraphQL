@@ -16,5 +16,7 @@
 9. Different Arguments in Resolver function
 10. Error Handling
     - Union
-    - fragements   
+    - fragements
+11. Setup the MYSQL DB connection.
+    - Setup the mutation, query and also nested queries for the db connection. 
    
