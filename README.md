@@ -18,5 +18,11 @@
     - Union
     - fragements
 11. Setup the MYSQL DB connection.
-    - Setup the mutation, query and also nested queries for the db connection. 
+    - Setup the mutation, query and also nested queries for the db connection.
+12. Use the Apollo Federation to make a unified supergraph.
+    - Also use the **Apollo Gateway** to route between two subGraphs
+    - Subgraphs Used:
+      -   Users
+      -   Movies
+   
    
