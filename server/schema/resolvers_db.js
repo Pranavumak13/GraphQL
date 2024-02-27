@@ -1,6 +1,6 @@
 import pkg from 'lodash';
 const { _ } = pkg;
-import {pool} from "../db.js"
+import {pool} from "../db/db.js"
 
 export const resolvers_db = { 
     Query: {

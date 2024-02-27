@@ -5,13 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "start:gateway":"nodemon gateway/gateway.js",
+    "start:user":"nodemon subGraphs/userSubgraph.js",
+    "start:movie":"nodemon subGraphs/movieSubgraph.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "@apollo/federation": "^0.38.1",
+    "@apollo/gateway": "^2.7.1",
     "@apollo/server": "^4.10.0",
     "apollo-server": "^3.13.0",
     "express": "^4.18.2",

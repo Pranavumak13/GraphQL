@@ -10,7 +10,7 @@ const app = express();
 
 const server = new ApolloServer({ 
     typeDefs, 
-    // resolvers  // when  to use the hardcoded data 
+    // resolvers  // when  to use the hardcoded data (FakeData.js)
     resolvers:resolvers_db, // when to use the DATABASE data
     context: (req) => {
       return req;

@@ -1,8 +1,8 @@
-import { UserList } from "../FakeData.js";
-import {MovieList } from "../FakeData.js"
+import { UserList } from "../db/FakeData.js";
+import {MovieList } from "../db/FakeData.js"
 import pkg from 'lodash'; // Lodash's modular methods are great for: Iterating arrays, objects, & strings. Manipulating & testing values. 
 const { _ } = pkg;
-import {pool} from "../db.js"
+import {pool} from "../db/db.js"
 
 export const resolvers = { 
     Query: {
