@@ -24,5 +24,8 @@
     - Subgraphs Used:
       -   Users
       -   Movies
+13. Write down the unit testing for the resolvers_db.js file
+    - Had to convert entire database into the CommonJs type as Jest Frameworks supports it.
+    - NodeJs-GraphQl-Jest implementation.
    
    
