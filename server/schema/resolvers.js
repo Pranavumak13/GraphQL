@@ -1,10 +1,12 @@
-import { UserList } from "../db/FakeData.js";
-import {MovieList } from "../db/FakeData.js"
-import pkg from 'lodash'; // Lodash's modular methods are great for: Iterating arrays, objects, & strings. Manipulating & testing values. 
-const { _ } = pkg;
-import {pool} from "../db/db.js"
+// import { UserList } from "../db/FakeData.js";
+const { UserList } = require ("../db/FakeData.js");
+// import {MovieList } from "../db/FakeData.js"
+const {MovieList } = require ( "../db/FakeData.js");
+// import pkg from 'lodash'; // Lodash's modular methods are great for: Iterating arrays, objects, & strings. Manipulating & testing values. 
+// const { _ } = pkg;
+const _ = require("lodash")
 
-export const resolvers = { 
+const resolvers = { 
     Query: {
         //USER RESOLVERS
         
@@ -106,7 +108,7 @@ export const resolvers = {
       }
 
     };
-
+module.exports = {resolvers};
     
 /*
 Different args in resolvers 

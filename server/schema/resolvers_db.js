@@ -1,8 +1,7 @@
-import pkg from 'lodash';
-const { _ } = pkg;
-import {pool} from "../db/db.js"
+const { pool } = require("../db/db.js");
+const _ = require('lodash');
 
-export const resolvers_db = { 
+exports.resolvers_db = {
     Query: {
         //USER RESOLVERS
         

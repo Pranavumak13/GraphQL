@@ -1,6 +1,7 @@
-import { gql } from 'apollo-server';
+// import { gql } from 'apollo-server';
+const {gql} = require('apollo-server');
 
-export const typeDefs = gql`
+const typeDefs = gql`
 #2
  type User {
     id:ID!
@@ -34,7 +35,7 @@ export const typeDefs = gql`
     #users : UsersResult
     user(id:ID!):User!
     userByName(name:String!):User!
-    movies: [Movie!]!
+    movies: [Movie!]!       
     movie(title:String!):Movie!
   }
   #6 creating an 'input' type for the CreateNewUser Mutation.
@@ -78,3 +79,5 @@ export const typeDefs = gql`
       union UsersResult = UserSuccessfulResult | UserFailureResult
 
 `;
+
+module.exports = {typeDefs};

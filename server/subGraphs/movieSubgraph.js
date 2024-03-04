@@ -1,14 +1,13 @@
-import {pool} from "../db/db.js"
-import { gql } from 'apollo-server';
-import { buildSubgraphSchema } from '@apollo/federation';
-import { startStandaloneServer } from '@apollo/server/standalone';
-import { ApolloServer } from '@apollo/server';
-import express from "express";
+const { pool } = require("../db/db.js");
+const { gql } = require('apollo-server');
+const { buildSubgraphSchema } = require('@apollo/federation');
+const { startStandaloneServer } = require('@apollo/server/standalone');
+const { ApolloServer } = require('@apollo/server');
+const express = require("express");
 
 const app = express();
 
-export const typeDefs = gql `
-
+const typeDefs = gql `
     type Movie @key(fields: "id"){
         id: ID!
         title: String!
@@ -19,10 +18,9 @@ export const typeDefs = gql `
     extend type Query{
         movie(id:ID!): Movie
     }
-
 `;
 
-export const resolvers = {
+const resolvers = {
     Query:{
         movie: async (parent, args) =>{
             try{
@@ -41,9 +39,8 @@ const server = new ApolloServer({
     schema: buildSubgraphSchema({typeDefs, resolvers})
 });
 
-
-const { url } = await startStandaloneServer(server, {
+startStandaloneServer(server, {
     listen: { port: 4002 },
-   });
-   
-console.log(`🚀  Server ready at: ${url}`);
+}).then(({ url }) => {
+   console.log(`🚀  Server ready at: ${url}`);
+});
