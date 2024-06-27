@@ -1,0 +1,386 @@
+Latest but byGateway
+
+query byGateway($userId: ID!, $movieId: ID!){
+  user(id: $userId) {
+    id
+    name
+  }
+  movie(id: $movieId) {
+    title
+    isFamous
+  }
+
+}
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+Latest but mutation
+
+query exampleQuery{
+  users {
+    id
+    name
+    friends {
+      id
+      name
+    }
+  }
+}
+
+
+query UserByID($userId: ID!) {
+  user(id: $userId) {
+    id
+    name
+    nationality
+    age
+  }
+}
+
+query UserByAName($name: String!){
+  userByName(name: $name) {
+    id
+    name
+    age
+    username
+  }
+}
+
+query GetMovies{
+  movies {
+    id
+    isFamous
+    title
+    year
+  }
+}
+
+
+mutation CreateAUser($input: StructNewUserInput!){
+  CreateUser(input: $input) {
+    id
+    name
+    username
+    age
+    nationality
+  }
+}
+
+----------------------------------------------------------------------------------------------------------------
+Latest
+
+query getAllUsers {
+  users { 
+    name
+    friends {
+      id
+      name
+    }
+  } 
+}
+
+# 
+query getAUser($userId: ID!){
+   user(id: $userId) {
+       name
+       age
+       nationality
+   }
+}
+
+
+#3
+query getMovie($title: String!){
+    movie(title: $title) {
+        id
+        title
+        isFamous
+    }
+    movies {
+        id
+        title
+        isFamous
+        year
+    }
+}
+
+ query getAllMovies{
+        movies{
+            id
+            isFamous
+            title
+            year
+        }
+    }
+
+ query getAUser($userId: ID!){
+   user(id: $userId) {
+       name
+       age
+       nationality
+       favoriteMovies {
+    
+           isFamous
+           title
+           year
+       } 
+   }
+}
+
+
+query getTheUsers($movieTitle2: String!){
+    users {
+        id
+        name
+        age
+        nationality
+    }
+  movie(title: $movieTitle2) {
+    
+  }
+}
+
+mutation CreateAUser($input: StructNewUserInput!){
+  CreateUser(input: $input) {
+    id
+    name
+    username
+    age
+  }
+}
+
+mutation UpdateTheUserAge($input: UpdateAgeInput!){
+  UpdateUserAge(input: $input) {
+      id
+      name
+      username
+      age
+  }
+}
+
+
+
+mutation($deleteUserId: ID!) {
+  deleteUser(id: $deleteUserId) {
+    id
+  }
+}
+
+query allUser {
+  users {
+    id
+    name
+    age
+    nationality
+  }
+}
+
+
+mutation UpdateTheUserNationality($updateUserNationalityInput2: UpdateNationalityInput!){
+  UpdateUserNationality(input: $updateUserNationalityInput2) {
+    
+    name
+    nationality
+  }
+}
+
+
+query GetMovieAndUsers{
+  users { 
+    id
+    name
+    } 
+}
+
+query GetMovies{
+  movies {
+    ...GetTitleAndYear
+  }
+}
+
+
+fragment GetTitleAndYear on Movie{
+  title
+  year
+  id
+}
+
+
+
+#  Error handling union
+
+query ExampleUnionQuery{
+  users {
+    ...on UserSuccessfulResult{
+      users {
+        id
+        name
+        age
+      }
+    }
+
+    ...on UserFailureResult{
+        message
+    }
+  }
+}
+
+
+
+
+----------------------------------------------------------------------------------------------
+query getAllUsers {
+  users {
+    name
+    id
+    nationality
+  }
+}
+
+# 
+query getAUser($userId: ID!){
+   user(id: $userId) {
+       name
+       age
+       nationality
+   }
+}
+
+
+#3
+query getMovie($title: String!){
+    movie(title: $title) {
+        id
+        title
+        isFamous
+    }
+    movies {
+        id
+        title
+        isFamous
+        year
+    }
+}
+
+ query getAllMovies{
+        movies{
+            id
+            isFamous
+            title
+            year
+        }
+    }
+
+ query getAUser($userId: ID!){
+   user(id: $userId) {
+       name
+       age
+       nationality
+       favoriteMovies {
+    
+           isFamous
+           title
+           year
+       } 
+   }
+}
+
+
+query getTheUsers($movieTitle2: String!){
+    users {
+        id
+        name
+        age
+        nationality
+    }
+  movie(title: $movieTitle2) {
+    
+  }
+}
+
+mutation CreateAUser($input: StructNewUserInput!){
+  CreateUser(input: $input) {
+    id
+    name
+    username
+    age
+  }
+}
+
+mutation UpdateTheUserAge($input: UpdateAgeInput!){
+  UpdateUserAge(input: $input) {
+      id
+      name
+      username
+      age
+  }
+}
+
+
+
+mutation($deleteUserId: ID!) {
+  deleteUser(id: $deleteUserId) {
+    id
+  }
+}
+
+query allUser {
+  users {
+    id
+    name
+    age
+    nationality
+  }
+}
+
+
+mutation UpdateTheUserNationality($updateUserNationalityInput2: UpdateNationalityInput!){
+  UpdateUserNationality(input: $updateUserNationalityInput2) {
+    
+    name
+    nationality
+  }
+}
+
+
+query GetMovieAndUsers{
+  users { 
+    id
+    name
+    } 
+}
+
+query GetMovies{
+  movies {
+    ...GetTitleAndYear
+  }
+}
+
+
+fragment GetTitleAndYear on Movie{
+  title
+  year
+  id
+}
+
+
+
+#  Error handling union
+
+query ExampleUnionQuery{
+  users {
+    ...on UserSuccessfulResult{
+      users {
+        id
+        name
+        age
+      }
+    }
+
+    ...on UserFailureResult{
+        message
+    }
+  }
+}
+
